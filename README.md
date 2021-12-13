@@ -21,7 +21,7 @@ python3.7 scripts/create_topic.py <TOPIC_NAME> # for the example, we tooke "iot"
 make up c=influxdb
 ```
 
-**Step 4:** Get your INFLUX_TOKEN from the UI of InfluxDB. Go to the **data** tab, and then in the **API Tokens** tab. Get the token and put in a `.env` file with the key name as **INFLUX_TOKEN**.
+**Step 4:** Get your INFLUX_TOKEN from the UI of InfluxDB. Go to the **data** tab, and then in the **API Tokens** tab. Get the token and put in `telegraf/.env` file with the key name as **INFLUX_TOKEN**.
 
 ```bash
 INFLUX_TOKEN=<token>
