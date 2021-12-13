@@ -42,6 +42,8 @@ make up c=telegraf
 python3.7 scripts/producer.py <TOPIC_NAME>
 ```
 
+## Helpers
+
 To stop a service:
 
 ```bash
