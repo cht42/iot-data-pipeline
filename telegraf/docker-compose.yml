@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+
+  telegraf:
+    image: telegraf
+    volumes:
+      - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+    environment:
+      INFLUX_TOKEN: ${INFLUX_TOKEN}

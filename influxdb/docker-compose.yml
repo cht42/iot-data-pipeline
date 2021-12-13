@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+
+  influxdb:
+    image: influxdb:2.1.1
+    restart: always
+    ports:
+      - 8086:8086
+    volumes:
+      - influxdb_data:/var/lib/influxdb2
+
+volumes:
+  influxdb_data:
