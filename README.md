@@ -42,6 +42,26 @@ make up c=telegraf
 python3.7 scripts/producer.py <TOPIC_NAME>
 ```
 
+**Step 8:** Launch Grafana then acces the UI here: http://locahost:3000. (Default login is `admin` and password `password`)
+
+```bash
+make up c=grafana
+```
+
+**Step 9:** Connect InfluxDB to Grafana ([documentation](https://docs.influxdata.com/influxdb/v2.0/tools/grafana/)).
+
+1. In InfluxDB UI, got to the API tokens tab (in the data tab) and create a new token with read writes on your bucket.
+2. Execute the following command to create a InfluxDB DBRP mapping:
+
+```bash
+docker-compose -f influxdb/docker-compose.yml exec influxdb influx v1 dbrp create -o bob -t <TOKEN> --db <DB_NAME> --rp <RETENTION_POLICY_NAME> --bucket-id <BUCKET_ID> --default
+```
+
+3. In grafana, add a data source (select InfluxDB as type). Then enter the address of the server: `http://172.17.0.1:8086`
+4. Add a _Custom HTTP Headers_ with key: `Authorization` and value: `Token <TOKEN>` (token is the one generated in step 1)
+5. Add the database you created in step 2.
+6. Click on save & test. You can now visualize your data in grafana.
+
 ## Helpers
 
 To stop a service:
